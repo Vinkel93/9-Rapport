@@ -1,0 +1,175 @@
+\chapter{Nomenclature}
+
+\section*{Acronyms}
+	
+	\begin{tabular}{|l c l|} \hline
+		MP		  	&&	Minimization Problem			\\ \hline
+		KVL 		&&  Kirchhoff´s Voltage Law 		\\ \hline
+		KCL 		&&  Kirchhoff´s Current Law			\\ \hline
+		MPC			&&  Model Predictive Control		\\ \hline
+		NRMSE	    &&  Normalized Root Mean Square Error	\\ \hline
+		MNGB		&&  Matlab Nonlinear Grey Box	\\ \hline
+	\end{tabular}
+\section*{Symbols}
+
+\begin{adjustbox}{max height=0.49\textheight}
+
+
+\begin{tabularx}{\textwidth}{|l|X|l|}\hline
+	\textbf{Symbol}		&	\textbf{Description} & \textbf{Unit}	\\\hline
+\end{tabularx}
+\end{adjustbox}
+
+
+\newpage
+\section*{Glossary of mathematical notation}
+
+This section sums up the mathematical notation and terminology used in this report.
+
+\textbf{Upper and lower bounds of a variable}
+
+\begin{equation}
+\underline{x} < x < \overline{x} 
+\end{equation}
+
+ Where $x \in {\mathbb{R}} $ and $\overline{x}$ and $\underline{x}$ are the upper and lower bounds, respectively.
+ 
+ \textbf{Intervals}
+
+\begin{equation}
+	[a,b] =  \{x \in \mathbb{R}|a\leq x \leq b|\}
+\underline{x} < x < \overline{x} 
+\end{equation}
+
+ Where $\overline{x}$ and $\underline{x}$ are the upper and lower bounds, respectively.
+
+ \textbf{Vectors and matrices}
+
+Vectors and matrices are noted with bold fonts, such that $\bm{v}$ is a vector:
+
+\begin{equation}
+\bm{v} = 
+\begin{bmatrix}
+
+		 v_1 	\\
+		 v_2 	\\
+		 \vdots \\
+		 v_n
+
+\end{bmatrix}
+\in \pmb{{\mathbb{R}}}^{(n \times 1)}
+\end{equation}
+
+and $\bm{M}$ is a matrix:
+
+\begin{equation}
+\bm{M} = 
+\begin{bmatrix}
+
+		 m_{11} & m_{12} & \hdots & m_{1k}	\\
+		 m_{21} & m_{22} & \hdots & m_{2k}	\\
+		 \vdots & \vdots & \ddots & \vdots	\\
+		 m_{n1} & m_{n2} & \hdots &m_{nk} \\
+
+\end{bmatrix}
+\in \pmb{{\mathbb{R}}}^{(n \times k)}
+\end{equation}
+
+% Vectorfields are vector-valued functions and noted with greek letters such that:
+
+% \begin{equation}
+% \bm{v} = 
+% \begin{bmatrix}
+
+% 		 v_1 	\\
+% 		 v_2 	\\
+% 		 \vdots \\
+% 		 v_n
+
+% \end{bmatrix}
+% \end{equation}
+
+% $\alpha(\bm{v(t)})$
+
+Continues vector variables are noted with $\bm{v(t)}$ such that:
+
+\begin{equation}
+\bm{v(t)} = 
+\begin{bmatrix}
+
+		 v_1(t) 	\\
+		 v_2(t)	\\
+		 \vdots \\
+		 v_n(t)
+
+\end{bmatrix}
+\in \pmb{{\mathbb{R}}}^{(n \times 1)}
+\end{equation}
+
+While discrete vector variables are referred to as sequences and noted with $\bm{v[k]}$, such that:
+
+\begin{equation}
+\bm{v[k]} = 
+\begin{bmatrix}
+
+		 v_1[k] 	\\
+		 v_2[k]	\\
+		 \vdots \\
+		 v_n[k]
+
+\end{bmatrix}
+\in \pmb{{\mathbb{R}}}^{(n \times 1)}
+\end{equation}
+
+is a sequence, where $k$ is the time step between two entries.
+
+The pseudo inverse of a matrix is noted with $\bm{{M}^{\dagger}}$.
+
+ \textbf{Small-signal and operating point values}
+
+Small-signals are noted with $\hat{u}$ and the operating point values are noted with $\bar{u}$.
+
+ \textbf{Derivatives}
+
+ The partial derivative of a function is noted with
+
+\begin{equation}
+\frac{\partial{f(x,y)}}{\partial{x}}
+\end{equation}
+
+% The derivative of a vector by scalar is noted with 
+
+% \begin{equation}
+% \frac{\partial{\bm{v}}}{\partial{x}}
+% \end{equation}
+
+The derivative of a vector by vector is noted with:
+
+\begin{equation}
+\frac{\partial{\bm{v}}}{\partial{\bm{w}}} =
+\begin{bmatrix}
+    \frac{\partial v_{1}}{\partial w_1} & \frac{\partial v_{1}}{\partial w_2} &  \dots  & \frac{\partial v_{1}}{\partial w_n} \\
+    \frac{\partial v_{2}}{\partial w_1} & \frac{\partial v_{2}}{\partial w_2} &  \dots  & \frac{\partial v_{2}}{\partial w_n} \\
+    \vdots & \vdots &  \ddots & \vdots \\
+    \frac{\partial v_{k}}{\partial w_1} & \frac{\partial v_{k}}{\partial w_2} &  \dots  & \frac{\partial v_{k}}{\partial w_n}
+\end{bmatrix}
+\end{equation}
+
+If the size of vector $\bm{v}$ and $\bm{w}$ are the same, the resulting matrix is referred to as a Jacobian.
+
+The time derivative of a function is noted with
+
+\begin{equation}
+\dot{f} = \frac{d f(t)}{dt}
+\end{equation}
+
+\textbf{Vector fields}
+
+Vector fields are introduced, and represent vector valued functions such that the mapping is the following:
+
+\begin{equation}
+\alpha(\bm{v}) : \pmb{{\mathbb{R}}}^{(n)} \rightarrow \pmb{{\mathbb{R}}}^{(n)} : [v_1, v_2, \hdots, v_n] \rightarrow [\alpha(v_1), \alpha(v_2),\hdots,\alpha(v_n)]
+\end{equation}
+
+
+

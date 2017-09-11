@@ -187,6 +187,11 @@
 \hangcaption								% Venstrejusterer flere-liniers figurtekst under hinanden
 \setlength{\belowcaptionskip}{0pt}			% Afstand under figurteksten
 
+%How to space out tabels
+\newcolumntype{L}{>{\centering\arraybackslash}X}
+\newcolumntype{C}{>{\centering\arraybackslash}X}
+\newcolumntype{R}{>{\centering\arraybackslash}X}
+
 
 \let\oldequation=\equation
 \let\endoldequation=\endequation
@@ -247,7 +252,7 @@
 \nouppercaseheads											% Ingen Caps oenskes
 
 
-\makeevenhead{AAU}{Group 830}{}{\leftmark}					% Definerer lige siders sidehoved (\makeevenhead{Navn}{Venstre}{Center}{Hoejre})
+\makeevenhead{AAU}{Group 936}{}{\leftmark}					% Definerer lige siders sidehoved (\makeevenhead{Navn}{Venstre}{Center}{Hoejre})
 \makeoddhead{AAU}{\rightmark}{}{Aalborg University}			% Definerer ulige siders sidehoved (\makeoddhead{Navn}{Venstre}{Center}{Hoejre})
 \makeheadrule{AAU}{\textwidth}{0.5pt}						% Tilfoejer en streg under sidehovedets indhold
 \makefootrule{AAU}{\textwidth}{0.5pt}{1mm}					% Tilfoejer en streg under sidefodens indhold
@@ -284,9 +289,9 @@
 \usepackage{lastpage}
 \usepackage{todonotes}
 \newcommand{\todotom}[1]{\todo[color=red!40, author=Tom]{#1}}
-\graphicspath{{./rapport/billeder/}}
+\graphicspath{{./rapport/pictures/}}
 \newcommand{\todoque}[1]{\todo[color=red, author=Question:]{#1}}
-\graphicspath{{./rapport/billeder/}}
+\graphicspath{{./rapport/pictures/}}
 \usepackage{epstopdf}
 
 
