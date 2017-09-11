@@ -1,0 +1,54 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+%
+\begin{tikzpicture} [scale=1,transform shape]
+
+\begin{axis}[%
+width=0.8\textwidth,
+height=1.6in,
+at={(1.011in,0.642in)},
+scale only axis,
+xmin=1,
+xmax=24,
+xlabel={Time [hours]},
+xmajorgrids,
+ymin=-10,
+ymax=8,
+ylabel={OD [\%]},
+ymajorgrids,
+axis background/.style={fill=white}
+]
+\addplot [color=mycolor1,solid,forget plot]
+  table[row sep=crcr]{%
+1	-5.437463211472205\\
+2	-7.391126068632443\\
+3	-8.46766249999999\\
+4	-8.490354709840897\\
+5	-8.062417240360281\\
+6	-5.870875316661436\\
+7	2.16775910063528\\
+8	5.654119964413625\\
+9	6.890214498337465\\
+10	6.772071021791097\\
+11	3.6929317176992265\\
+12	1.6860389216804907\\
+13	-1.6823879541627775\\
+14	-3.588734316984266\\
+15	-4.531997569807969\\
+16	-5.003207286156666\\
+17	-4.665344053853536\\
+18	-2.3066302183380327\\
+19	3.554015071138294\\
+20	5.84524564200066\\
+21	2.7806227813992206\\
+22	2.081776874331844\\
+23	0.2754426090897165\\
+24	-3.8463715113861596\\
+};
+\end{axis}
+\end{tikzpicture}%

@@ -1,0 +1,97 @@
+\section{Model predictive control}
+\label{sec:MPC}
+
+Model predictive control is an advanced control method that depends on the dynamic model of the system. It is model based as it uses an explicit internal model to generate predictions of future system behavior. Therefore MPC allows to calculate an optimal control signal taking the future model and disturbance behavior into account. The control structure of MPC is in general:
+
+\begin{figure}[H]
+\centering
+\input{report/tikz/MPC_diagram.tex} 
+\caption{The block of MPC algorithm \cite{Camacho2007}.}
+\label{mpc_structure}
+\end{figure}
+
+\figref{mpc_structure} is of the same structure as \figref{fig:control_structure}, however here the MPC block is specified. A MPC is an iterative process that can be summarized as follows: 
+
+\begin{itemize}
+\item[1:] A measurement is taken on either the outputs or directly on the states if state measurement is available. Otherwise the states are estimated. 
+\item[2:] The optimizer calculates a set of predicted values over the prediction horizon, according to the objective of the control and the constraints. The predicted inputs are defined by $\bm{u_}{Hp}$.
+\item[3:] $\bm{u}_{Hp}[k|k]$, the first entry of the calculated control sequence at the current time $k$, is applied.
+\item[4:] Go back to 1. 
+\end{itemize}
+
+The future outputs $\bm{y}_{Hp}$ and the future inputs $\bm{u}_{Hp}$ are defined by:
+
+\begin{equation}
+\bm{y_{Hp}} =  
+ \begin{bmatrix}
+  \bm{y}[k|k]\\
+  \vdots  \\
+  \bm{y}[k+H_p-1|k]   
+ \end{bmatrix}
+\end{equation}
+
+\begin{equation}
+\bm{u_{Hp}} =  
+ \begin{bmatrix}
+  \bm{u}[k|k]\\
+  \vdots  \\
+  \bm{u}[k+H_p-1|k]   
+ \end{bmatrix}
+\end{equation}
+
+ \begin{minipage}[t]{0.20\textwidth}
+ Where\\
+ \hspace*{8mm} $\bm{y}[k|k]$ \\
+% \textcolor{White}{te} \\
+ %\hspace*{8mm} $H_w$ \\
+ \hspace*{8mm} $H_p$ \\
+ %\hspace*{8mm} $\tilde u(k|k)$\\
+ and \hspace*{0.7mm} $\bm{u}[k|k]$	
+ \end{minipage}
+ \begin{minipage}[t]{0.68\textwidth}
+ \vspace*{2mm}
+ is the predicted output to time $k$ based on the current output, \\
+ %is the window horizon,\\
+ is the prediction horizon,\\
+ is the predicted optimal control signal to the current time $k$.
+ %is the control horizon.s
+ \end{minipage}
+
+To calculate the matrices, $H_p$ need to be determined. In \secref{sec:cost_fkt} it is seen that the price fluctuates a lot but some periodicity is seen every 24 hours. Furthermore, water consumption is seen as periodic, with a periodicity of 24 hours, due to the daily rhythm of the population. Therefore, $H_p$ is chosen to 24. 
+
+%$H_w$ is used if deviation from the constraints are allow with in a transit period. Here $H_w$ is chosen to 1, because we want to be within the constraints at all times. 
+
+%In this section the objective function, describing the electrical price, will be setup. Furthermore the MPC will be designed. 
+
+% \subsection{Constraints}
+
+% When designing a MPC the constraints have to be setup so they represent actuator slew rates, actuator ranges and constraints for the control variables. These constraints are setup as matrices called $\pmb{E}, \pmb{F} \text{and} \:\pmb{G}$. The constraints matrices are defined by: 
+
+% \begin{equation}
+% \pmb{E} \cdot [\Delta\tilde u(k|k),...,\Delta\tilde u(k+H_u-1|k),1]^T \leq 0 
+% \label{eq:slewrate}
+% \end{equation}
+% \begin{equation}
+% \pmb{F} \cdot [\tilde u(k|k),...,\tilde u(k+H_u-1|k),1]^T \leq 0 
+% \label{eq:actranges}
+% \end{equation}
+% \begin{equation}
+% \pmb{G} \cdot [\tilde y(k+H_w|k),...,\tilde y(k+H_p|k),1]^T \leq 0
+% \label{eq:controlvar}
+% \end{equation}
+
+% The actuator slew rate constraint, matrix $\pmb{E}$, determines how fast the actuator can change per time unit. This is a way of describing the physical limit of the pumps. The actuator ranges describe how the control signal to the pumps should look. This is simply a way to describe 0 to 100 \% performance. In the case of this project the pumps can be controlled with an input from 0 to 5. The constraints on the control variables is the constraints setup in \secref{control_problem}. 
+
+% \todo{This part could properly be specified better.}
+
+%To easy notation $U(k) = $
+
+%As it can be seen from \eqref{eq:slewrate,eq:actranges,eq:controlvar} depend on three different variables $\hat u(k|k), \Delta\hat u(k|k) \text{and} \hat z(k+H_w|k)$
+
+% The plan from here on is: 
+
+% 1: Describe the transformation of the constraints so they all depend on delta U(k) 
+
+% 2: Explain how the minimization problem can be set up in general and then s.t. the new constrains 
+
+% 3: Cover why we need an observer and what it means for how the minmization problem is set up - U(k) -> \hat U(k|k)

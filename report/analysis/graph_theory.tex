@@ -1,0 +1,184 @@
+\section{Graph representation}  
+\label{GraphTheory}
+
+A graph is a formal mathematical way for representing a network, which can be applicable among others in engineering or scientific context such as in mechanical systems, electrical circuits and hydraulic networks \cite{graph_intro}. 
+
+The modelling of the water distribution network is done with the help of Graph Theory(GT). Each terminal of the network is associated with a node and the components of the system correspond to edges \cite{GraphTheoryCarsten}. 
+\subsection*{Incidence matrix} 
+\label{IncidenceSection}
+The incidence matrix, $\bm{H}$, of a graph with \textit{n} nodes and \textit{e} edges is 
+defined by $\bm{H} = [a_{ij}]$. Where the number of rows and columns are defined by the amount of nodes and edges respectively. 
+Additionally, the particular node and edge is noted with the indices $i$ and 
+$j$.
+
+In case of a hydraulic networks, the edges are directed in order to keep track of the direction of the flows in the system. This results in a directed incidence matrix as described below:
+
+\begin{equation}
+\label{DiGraph}
+ a_{ij} =
+		\left\{
+		\begin{array}{ll}
+		
+		1 			&      \text{if the $j^{th}$ edge is incident out of the $i^{th}$ node}	
+\\
+		-1                       &     \text{if the $j^{th}$ edge is incident into the $i^{th}$ node}
+\\
+
+
+                0                       &      \text{otherwise}
+
+		\end{array}
+		\right.
+\end{equation}	
+
+In \appref{IncidenceSection} the corresponding incidence matrix of the system is 
+shown. 
+
+\subsection*{Cycle matrix}
+\label{CycleSection}
+A spanning tree, $T \in \mathcal{G}$ is a subgraph which contains all nodes of $\mathcal{G}$ but has no cycles \cite{GraphModel}. 
+In order to obtain the spanning tree, it is necessary to remove an edge from each cycle of the graph. The removed edges are called chords. The number of chords, $l$, is governed by the following expression:
+
+\begin{equation}
+  \label{Numberofchords}
+  l = e - n +1
+\end{equation}
+
+By adding a chord to $T$, a cycle is created which is called a fundamental cycle. A graph is conformed by as many fundamental cycles as there are chords\cite{GraphModel}.  
+The set of fundamental cycles correspond to the fundamental cycle matrix $\bm{B}$, such that the number of rows and columns are defined by the amount of chords and edges, respectively. 
+
+The cycle matrix of a directed graph can be expressed with $\bm{B} = [b_{ij}]$ where $i$ and $j$ denote the chords and edges:
+
+\begin{equation}
+\label{DiGraphCycle}
+ b_{ij} =
+		\left\{
+		\begin{array}{ll}
+		
+		1 			&      \text{if the edges $j^{th}$ is in the cycle $i^{th}$ and the directions match}	
+\\
+		-1                       &     \text{if the edges $j^{th}$ is in the cycle $i^{th}$ and the directions are opposite}
+\\
+
+                0                       &      \text{otherwise}
+
+		\end{array}
+		\right.
+\end{equation}	
+
+In \appref{CycleAppendix} the corresponding cycle matrix of the system is 
+shown.
+
+\subsection*{Kirchhoff's Law}
+\label{KirchhoffSection}
+
+In the same way as it is described in \secref{HydraulicModel}, the graph of a hydraulic network assigns dual variables to every edge: 
+the pressure, $\Delta p_k(t)$, and the flow, $q_k(t)$. These two variables can be set as vectors containing the individual flows through the edges and the pressure drop across them:
+
+% \begin{minipage}{0.45\linewidth}
+% \begin{equation}
+% p(t) =
+% \begin{bmatrix}
+%          p_1 \\
+% 	p_2 \\ 
+% 	\vdots \\
+% 	p_e \\
+% \end{bmatrix}  \nonumber
+% \end{equation}  
+% \end{minipage}
+
+% \begin{minipage}{0.45\linewidth}
+%  \begin{equation}
+% q(t) =
+% \begin{bmatrix}
+%          q_1 \\
+% 	q_2 \\ 
+% 	\vdots \\
+% 	q_e \\
+% \end{bmatrix}
+% \end{equation}
+% \end{minipage}
+
+\begin{equation}
+%\[
+\bm{\Delta p(t)} =
+\begin{bmatrix}
+         \Delta p_c \\
+	\Delta p_f \\ 
+	\vdots \\
+	\Delta p_e \\
+\end{bmatrix}
+\text{and}\hspace{0.3cm}
+\bm{q(t)} =
+\begin{bmatrix}
+         q_c \\
+	q_f \\ 
+	\vdots \\
+	q_e \\
+\end{bmatrix}
+%\]
+\end{equation}
+
+Where the subscript \textit{c} denotes the chords and the subscript \textit{f$_{\cdots}$e} denotes all the edges in the spanning tree.  
+In order to derive a model for the hydraulic network, a set of independent flow variables are identified \cite{TowerModel}. These flow variables have the property that their values can be set independently from other flows in the network and they coincide with the flows through the chords. 
+Therefore it is convenient to choose the column indexing of the 
+$\pmb{H}$ and $\pmb{B}$ matrix, such as:
+
+% \begin{minipage}{0.45\textwidth}
+% \begin{equation}
+% H = [H_c \quad H_f]
+% \end{equation}   \nonumber
+% \end{minipage}
+
+% \begin{minipage}{0.45\textwidth}
+% \begin{equation}
+% B = [B_c  \quad B_f]
+% \end{equation}
+% \end{minipage}
+
+\begin{equation}
+%\[
+\bm{H} = [\bm{H_c} \quad \bm{H_f}]
+\hspace{0.1cm} \text{and}\hspace{0.3cm}
+\bm{B} = [\bm{B_c}  \quad \bm{B_f}] = [\bm{I} \quad \bm{B_f}]
+%\]
+\label{HandB}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\bm{H_c} \quad \text{and} \quad \bm{B_c}$ \\
+\hspace*{8mm} $\bm{H_f} \quad \text{and} \quad \bm{B_f}$ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{8mm} are the matrices corresponding to the chords,\\
+\hspace*{8mm} are the matrices corresponding to the spanning tree. 
+\end{minipage}
+
+Since the edge variables are governed by elements interconnected in the network, 
+they must obey the law of conservation of mass and pressure \cite{GraphModel}. 
+
+Kirchhoff´s Current Law (KCL) states that the net sum of all the flows leaving and entering a node is zero. Formulating this statement in matrix form:
+
+\begin{equation}
+  \label{KCL}
+  \bm{H} \bm{q(t)} = 0
+\end{equation}
+
+Furthermore, regarding Kirchhoff´s Voltage Law (KVL) it is stated that at any time the net sum of the pressure drops in a cycle 
+is zero. In terms of matrix form:
+
+\begin{equation}
+ \label{KVL} 
+ \pmb{B}  \pmb{\Delta p (t)} = 0
+\end{equation}
+
+where the fundamental loops have a reference direction given by the direction of the 
+chords. 
+
+
+
+
+
+ 

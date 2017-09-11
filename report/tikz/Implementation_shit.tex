@@ -1,0 +1,131 @@
+% This file was created by matlab2tikz.
+%
+%The latest updates can be retrieved from
+%  http://www.mathworks.com/matlabcentral/fileexchange/22022-matlab2tikz-matlab2tikz
+%where you can also make suggestions and rate matlab2tikz.
+%
+\definecolor{mycolor1}{rgb}{0.00000,0.44700,0.74100}%
+\definecolor{mycolor2}{rgb}{0.85000,0.32500,0.09800}%
+%
+\begin{tikzpicture}
+
+\begin{axis}[%
+scaled y ticks = false,
+ y tick label style={/pgf/number format/fixed,
+/pgf/number format/1000 sep = \thinspace}, % Optional if you want to replace comma as the 1000 separator 
+width=4.521in,
+height=1.253in,
+at={(0.758in,2.554in)},
+scale only axis,
+xmin=0,
+xmax=23,
+xmajorgrids,
+ymin=0,
+ymax=0.06,
+ymajorgrids,
+ylabel={Pressure [bar]},
+%symbolic y coords={0.00,0.02,0.04,0.06},
+axis background/.style={fill=white},
+legend style={legend cell align=left,align=left,draw=white!15!black}
+]
+\addplot[const plot,color=mycolor1,solid] plot table[row sep=crcr] {%
+0	0.0300000001653634\\
+1	0.0300000001474623\\
+2	0.0300000000530604\\
+3	0.0300000000471408\\
+4	0.0300000000650659\\
+5	0.0300000002899808\\
+6	0.0300000009189617\\
+7	0.0300000039913454\\
+8	0.0300000067674616\\
+9	0.0300000035787218\\
+10	0.030000001525731\\
+11	0.0300000006551575\\
+12	0.0300000002362083\\
+13	0.0300000001566118\\
+14	0.0300000001159642\\
+15	0.0300000001026481\\
+16	0.0300000001115926\\
+17	0.0300000001361245\\
+18	0.0300000001450396\\
+19	0.0300000001513551\\
+20	0.0300000001320335\\
+21	0.0300000001211299\\
+22	0.0300000001014146\\
+23	0.030000000067927\\
+};
+\addlegendentry{$\text{u}_{\text{h}\text{p1}}$};
+
+\addplot[const plot,color=mycolor2,solid] plot table[row sep=crcr] {%
+0	0.0500000000006002\\
+1	0.050000000000603\\
+2	0.0500000000006585\\
+3	0.0500000000006634\\
+4	0.0500000000006431\\
+5	0.0500000000005554\\
+6	0.0500000000004699\\
+7	0.0500000000003259\\
+8	0.0500000000002744\\
+9	0.0500000000003349\\
+10	0.0500000000004193\\
+11	0.0500000000004905\\
+12	0.0500000000005579\\
+13	0.0500000000005806\\
+14	0.0500000000005962\\
+15	0.0500000000006017\\
+16	0.050000000000596\\
+17	0.050000000000584\\
+18	0.0500000000005793\\
+19	0.0500000000005757\\
+20	0.0500000000005819\\
+21	0.0500000000005853\\
+22	0.0500000000005934\\
+23	0.0500000000006133\\
+};
+\addlegendentry{$\text{u}_{\text{h}\text{p2}}$};
+
+\end{axis}
+
+\begin{axis}[%
+width=4.521in,
+height=1.253in,
+at={(0.758in,0.881in)},
+scale only axis,
+xmin=0,
+xmax=23,
+xmajorgrids,
+xlabel={Time [hours]},
+ymin=150,
+ymax=300,
+ymajorgrids,
+ylabel={Price [DKK/MWh]},
+axis background/.style={fill=white}
+]
+\addplot[const plot,color=mycolor1,solid,forget plot] plot table[row sep=crcr] {%
+0	210.15\\
+1	210.3\\
+2	194.9\\
+3	193.565\\
+4	200\\
+5	223.91\\
+6	242.07\\
+7	264.61\\
+8	271.82\\
+9	265.2\\
+10	253.6\\
+11	241.32\\
+12	226.44\\
+13	220.72\\
+14	216.55\\
+15	215.14\\
+16	217.07\\
+17	220.86\\
+18	222.5\\
+19	223.84\\
+20	222.35\\
+21	221.68\\
+22	219.52\\
+23	213.425\\
+};
+\end{axis}
+\end{tikzpicture}%

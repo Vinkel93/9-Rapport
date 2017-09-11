@@ -1,0 +1,281 @@
+\subsection{Network model}  
+\label{ParameterEstimation}
+
+Once the corresponding incidence and cycle matrices are identified, and the analogy between hydraulic and electrical circuits is concluded, the hydraulic network is described as a set of differential equations. In this section a general form of the network model is derived using all the previously obtained expressions. 
+\\
+In \appref{IncidenceSection}, the incidence matrix is shown. The last column of $\bm{H}$ represents the edge that belongs to the WT. 
+%The number of edges representing the WT is one and in the further model description is denoted with $w$. 
+\\
+Hence, the $\bm{H}$ matrix can be written as:
+% It is worth mentioning that it is been also followed the structure such as the last 
+% column of the H matrix agrees with the WT edge. Hence, the H matrix can 
+% be written as
+
+\begin {equation}
+\bm{H} = [\bm{H_1} \quad \bm{H_0}]
+\label{Hmatrix}
+\end{equation}
+
+\begin{minipage}[t]{0.24\textwidth}
+Where\\
+\hspace*{8mm} $\bm{H_1} \in \: \mathbb{R}^{n \times (e-1)}$  \\
+and \hspace*{0.4mm} $\bm{H_0} \in \: \mathbb{R}^{n \times 1} $ 
+\end{minipage}
+\begin{minipage}[t]{0.70\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the $\bm{H}$ matrix without the edge corresponding to the WT,\\
+\hspace*{4mm} is the $\bm{H}$ matrix with the column corresponding to the WT. 
+\end{minipage}
+
+Similarly, the fundamental cycle matrix, B, is structured such that the last column agrees with the edge representing the WT.
+
+\begin{equation}
+  \bm{B} = [\bm{B_1} \quad \bm{B_0}]
+\end{equation} 
+
+\begin{minipage}[t]{0.24\textwidth}
+Where\\
+\hspace*{8mm} $\bm{B_1} \: \in \mathbb{R}^{l \times (e-1)}$  \\
+and \hspace*{0.4mm} $\bm{B_0} \: \in \mathbb{R}^{l \times 1} $ 
+\end{minipage}
+\begin{minipage}[t]{0.70\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the $\bm{B}$ matrix without the edge corresponding to the WT,\\
+\hspace*{4mm} is the $\bm{B}$ matrix with the column corresponding to the WT.
+\end{minipage}
+
+As mentioned in \secref{KirchhoffSection}, $\bm{q}$ is a vector containing all the flows, which can be structured as follows:
+
+\begin{equation}
+\bm{q} =
+\begin{bmatrix}
+         \bm{q_1} \\
+	\bm{q_0} 
+\end{bmatrix}
+\label{qmatrix}
+\end{equation}
+
+\begin{minipage}[t]{0.24\textwidth}
+Where\\
+\hspace*{8mm} $\bm{q_1} \in \mathbb{R}^{(e-1) \times 1}$  \\
+and \hspace*{0.7mm} $\bm{q_0} \in \mathbb{R}^{1 \times 1} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the flow through all edges expect for WT,\\
+\hspace*{4mm} is the flow through the edge belonging to the WT. 
+\end{minipage}
+
+The vector containing the pressures at the nodes can be structured as
+
+\begin{equation}
+\bm{p} =
+\begin{bmatrix}
+         \bm{p_1} \\
+	\bm{p_0} 
+\end{bmatrix}
+\end{equation}
+
+\begin{minipage}[t]{0.24\textwidth}
+Where\\
+\hspace*{8mm} $\bm{p_1} \in \mathbb{R}^{(n-1) \times 1}$  \\
+and \hspace*{0.7mm} $\bm{p_0} \in \mathbb{R}^{1 \times 1} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the pressure at all nodes expect for the WT,\\
+\hspace*{4mm} is the pressure in the WT.
+\end{minipage}
+
+In \eqref{KCL} KCL is applied, which states that the sum of all flows entering into a node must be equal to the sum of the flows leaving the node. By choosing independent set of flows corresponding to the chords of a spanning tree, the flow through every edge of the hydraulic system can be expressed in terms of the flow through the chords, $z$ \cite{GraphModel}.
+The chord flows make it possible to deal with less variables, thus making the set of differential equations easier to handle.  The elements of $\bm{z}$ are called the free flows of the system and are independent from each other\cite{GraphTheoryCarsten}.
+
+\begin{equation}
+  \bm{q} = \bm{B} ^{T}  \bm{z}
+  \label{ChordRelation}
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\bm{z} \in \mathbb{R}^{(1 \times l)} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the chord flow vector and $l$ is the number of chords.
+\end{minipage}
+
+Before writing up an expression that describes all parts, the component model, \eqref{CompleteModel}, needs to be modified with the simplifications introduced in \secref{SystemModel}. As specified, there are four pumps in the system, two main pumps and two PMA pumps, which provide a pressure according to the input signals. However, there is one case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the pump acts as a resistance for the series connection. This is because the pump is inactive in the system. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented separately, thus \eqref{CompleteModel} can be rewritten as:%  \eqref{CompleteModel_extended}.
+
+% However there is one case between ($n_3$-$n_{18}$), see \appref{systemdiagram}, where the model of the pump is inserted into the model of the valves and considered as an additional resistance without the pump being turned on. In this case the corresponding edge does not act as an input but can be described by \eqref{omega_zero}. Therefore \eqref{CompleteModel} is structured in such a way that the edge corresponding to the connection between the WT and the system is represented respectively. The component-wise expression can be written as follows:
+%\todo{B1 - B0 multiplication -> very important to describe! }
+
+\begin{equation}
+\label{CompleteModel_extended}
+\Delta p_k \!= \! \underbrace{\lambda_k (q_k) \!+ \! \zeta_k \!+ \! J_k \dot{q_k}}_\text{Pipe} \!+ \!\underbrace{\mu_k (q_k,OD_k)}_\text{Valve}\! + \!\underbrace{\Delta p_{wt,k}}_\text{Water tower} \!+\! \underbrace{\gamma_k (q_k)}_\text{WT connection}\! -\! \underbrace{\tilde{\alpha}_k(\omega_k,q_k)}_\text{Pump+valves}
+\end{equation}
+
+Where
+\begin{align*}
+q_k 
+\end{align*}
+is the $k^{th}$ element of $\bm{q}$
+%
+\begin{align*}
+\lambda_k (q_k) + \zeta_k= C_{p,k} q_k |q_k|
+\end{align*}
+is the $k^{th}$ element of the vector field which describes the pressure drop around the pipe elements and $C_{p,k}$ is the resistance of the pipe,
+%
+\begin{align*}
+\mu_k (q_k,OD_k) = C_{v,k} q_k |q_k| 
+\end{align*}
+is the $k^{th}$ element of the vector field which describes the pressure drop around the valve elements and $C_{p,k}$ is the resistance of the valve,
+%
+\begin{align*}
+\tilde{\alpha}_k(\omega_k,q_k) = \Big(\frac{2}{k_{v100}^2} - a_{h2k}\Big)|q_k| q_k + a_{h1k} \omega_{k} q_k + a_{h0k}{\omega_k}^2
+\end{align*}
+is the $k^{th}$ element of the vector field which describes the pressure contribution of the $k^{th}$ pump,
+%
+\begin{align*}
+\gamma_k (q_k) = \Big(\frac{2}{k_{v100}^2} - a_{h2k}\Big)|q_k| q_k  
+\end{align*}
+is the $k^{th}$ element of the vector field which describes the pressure drop around the WT connection.
+
+%In order to extract the component model into a more generalized form, it is rewritten as a function of flow, $\bm{q_1}$, angular velocity, $\omega$, and opening degree of the valves, $OD$ as follows:
+Gathering the functions of the pipes, valves, the WT and its connection the following vector field is introduced:
+
+\begin{equation}
+  f(\bm{q}, \bm{OD}) = \lambda(\bm{q}) + \bm{\zeta} + \mu(\bm{q}, \bm{OD}) + \gamma (\bm{q}) + \bm{\Delta p_{wt}}
+  \label{ComponentFunction}
+\end{equation}
+
+Where $f(\bm{q}, \bm{OD}) $ is a vector field describing the pressure drops, due to friction and the WT capacitance, across each corresponding component. 
+
+
+Where
+\begin{align}
+f_k &= \lambda_k (q_k) + \zeta_k  \hskip 1cm  \text{for}\: k = 2,3,4,5,6,7,10,11,12,14,17,18,19,21,23 \\
+f_k &= \mu_k (q_k, OD_{k})  \hspace{0.85cm} \text{for}\:k = 13,15,20,22\\
+f_k &= \gamma_k (q_k)  \hspace{1.8cm} \text{for}\: k = 24 \\
+f_k &= \Delta p_{wt,k}  \hspace{1.7cm} \text{for}\:k = 25
+\end{align}
+
+It is important to point out that in \eqref{ComponentFunction} the functions for the different components take the flow as a vector in their arguments. It means that the right hand-side of the equation returns a vector with a size of $\bm{q}$. The elevation and the pressure drop across the WT therefore are also treated as vector that returns the appropriate value only for edges where elevation or the WT is present. 
+
+Taking the newly introduced vector field, $f(\bm{q}, \bm{OD})$ into account, the model for the network, \eqref{CompleteModel_extended}, can be written up such that:
+
+\begin{equation}
+  \bm{\Delta p} =  \bm{J} \bm{\dot{q}} + f(\bm{q}, \bm{OD}) - \tilde{\alpha} (\bm{\omega},\bm{q})
+  \label{NoTowerModel}
+\end{equation}
+
+In \eqref{NoTowerModel} the hydraulic network model is described in terms of the independent flows through all the nodes and shows the inputs to the system separately. The vector field, $f(\bm{q}, \bm{OD})$, represents the pressure drops across elements as one vector. The $k^{th}$ element of the vector, e.g. represents a pressure drop accross a valve only if $\mu(\bm{q},\bm{OD})$ is nonzero, which is the case if the $k^{th}$ edge is a valve. The same can be said in case of pipes, the WT and the connection. 
+
+In order to reduce the order of the model and hence, the amount of unknowns, chord flows are introduced according to \eqref{ChordRelation}. 
+
+\begin{equation}
+    \bm{\Delta p} =  \bm{J} \bm{B^T} \bm{\dot{z}} + f(\bm{B^T}\bm{z}, \bm{OD}) - \tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z})
+  \label{ChordsModel}
+\end{equation}
+
+Making use of $KVL$ shown in \eqref{KVL}, the following is obtained
+
+\begin{equation}
+ \bm{B}\bm{\Delta p} = \bm{B} \bm{J} \bm{B^T} \bm{\dot{z}} + \bm{B} f(\bm{B^T}\bm{z}, \bm{OD}) - \bm{B}\tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z}) = 0 \label{model4lin}
+ \end{equation}
+
+Isolating the inertia matrix to the left side
+
+\begin{equation}
+  \bm{B} \bm{J} \bm{B^T} \bm{\dot{z}} = - \bm{B} f(\bm{B^T}\bm{z},\bm{OD}) + \bm{B}\tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z}) 
+ \label{isolateZ}
+ \end{equation}
+
+It is desired to know the value of the flow through the chords, hence the equation above is solved 
+for $\bm{\dot{z}}$. In order to invert $(\bm{B J} \bm{{B}}^T)$ it has to be non-singular i.e. invertible. 
+
+Defining $\bm{\mathcal{J}} = \bm{B J} \bm{{B}}^T $, then for the term $\bm{\mathcal{J}}$ in order to be positive-definite it has to be a square matrix and its determinant has to be non-zero. Note that $\bm{\mathcal{J}}$ is
+
+\begin{equation}
+  \label{Jequation}
+  \bm{\mathcal{J}} = (\bm{I \quad B_f}) 
+  \begin{pmatrix}
+    \bm{J_c}    &    \bm{0 }   \\
+    \bm{0}       &   \bm{ J_f}
+  \end{pmatrix}
+  \begin{pmatrix}
+    \bm{I}    \\
+    \bm{{B_f}}^T
+  \end{pmatrix}
+  = \bm{J_c} + \bm{B_f J_f} \bm{{B_f}}^T
+\end{equation}
+
+\begin{minipage}[t]{0.20\textwidth}
+Where\\
+\hspace*{8mm} $\bm{J_c} \in \mathbb{R}^{l \times l}$  \\
+and \hspace*{0.7mm} $\bm{J_f} \in \mathbb{R}^{f \times f} $ 
+\end{minipage}
+\begin{minipage}[t]{0.68\textwidth}
+\vspace*{2mm}
+\hspace*{4mm} is the inertia in the chord components,\\
+\hspace*{4mm} is the inertia in the components of the spanning tree.
+\end{minipage}
+
+$\bm{J_c}$ is a diagonal inertia matrix containing the chord elements. Since all the components corresponding to a chord in $\bm{\mathcal{G}}$ are pipes, all the 
+diagonal terms are positive. Thus, $\bm{J_c} > 0$. 
+
+Nevertheless, if there is a chord corresponding to a non-pipe element, \eqref{Jequation} 
+would still be positive-definite as long as it is possible to create a spanning tree containing all chords as pipe elements from $\bm{\mathcal{G}}$ \cite{TowerModel}.
+
+For the remaining term $\bm{B_f J_f {B_f}}^T$, $\bm{J_f}$ is a non-negative matrix as all its elements are zero or describe the inertia of a pipe. 
+Multiplying $\bm{B_f J_f {B_f}}^T$ by a non-zero vector column $\mathbf{x}$ and its transpose $\mathbf{x}^{T}$
+
+\begin{equation}
+  \bm{x}^{T} \bm{B_f J_f {B_f}}^T \bm{x}
+  \label{PosDefi}
+\end{equation}
+
+Creating a new variable $\bm{y} = \bm{B_f}^T \mathbf{x}$ and applying the definition of positive semi-definiteness 
+\cite{MatrixBook}
+
+\begin{equation}
+  \bm{y}^{T} \bm{J_f y} \geqslant 0
+  \label{PosDefEq}
+\end{equation}
+
+Thus, \eqref{Jequation} is positive-definite and it provides a sufficient condition for $\bm{\mathcal{J}}$ being invertible. 
+
+Therefore, the system can be described as follows
+
+\begin{equation}
+   \bm{\dot{z}} = -\bm{\mathcal{J}}^{-1} \Big[ \bm{B} f(\bm{B^T}\bm{z}, \bm{OD}) + \bm{B}\tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z}) \Big ]
+   \label{ParatModelFinal}
+ \end{equation}
+
+\subsection{Pressure drop across the nodes}
+\label{ModelRelationSection}
+
+% For ease of reading, the complete component model in \eqref{NoTowerModel} is restated: 
+
+% \begin{equation*}
+%   \bm{\Delta p_1} =  \bm{J} \bm{\dot{q}_1} + \tilde{f}(\bm{q_1}, \bm{w}, \bm{k_v})
+%   \label{RecallModel}
+% \end{equation*}
+
+\eqref{NoTowerModel} describes the system by the pressure across each element. The dynamics are determined by the inertia of the pipes while the pressure drop relation is described by the vector field $f$ and the input pressure is provided by the pumps, $\tilde\alpha$. 
+The flow rate through the chords is found in \eqref{ParatModelFinal}, thus an expression for $ \bm{\Delta p} $ can be expressed by substituting the flow rate into \eqref{ChordsModel}: 
+
+\begin{equation}
+ \bm{\Delta p} =  -\bm{J} \bm{B^T}\bm{\mathcal{J}}^{-1} \Big[ \bm{B} f(\bm{B^T}\bm{z}, \bm{OD}) + \bm{B}\tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z}) \Big ] + f(\bm{B^T}\bm{z},\bm{OD}) - \tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z})
+  \label{PressureLarge}
+ \end{equation}
+ 
+Writing in short form:
+ 
+ \begin{equation}
+  \bm{\Delta p} = (\bm{\mathcal{I}} - \bm{J} \bm{B^T}\bm{\mathcal{J}}^{-1} ) f(\bm{B^T}\bm{z}, \bm{OD}) - (\bm{\mathcal{I}} + \bm{J} \bm{B^T}\bm{\mathcal{J}}^{-1} ) \tilde{\alpha} (\bm{\omega},\bm{B^T}\bm{z})
+  \label{PressureShort}
+ \end{equation}
+
+a general form of the pressure across all elements of the network is obtained. $\bm{\mathcal{I}}$ is the identity matrix. 
+
+

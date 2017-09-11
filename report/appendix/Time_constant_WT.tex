@@ -1,0 +1,64 @@
+\section{Water tower time constant}
+\label{sec:WT_TimeConstant}
+
+In this section the time constant of the water tank is found.
+\todo{Found or tested i compare with theory?}
+
+%\subsection{One clamp push} % \label{app:...}
+\subsection*{Test equipment:}
+\begin{itemize}
+\item The water distribution system at AAU.
+\end{itemize}
+
+\subsection*{Procedure:}
+The following procedure was made for finding the time constant:
+\begin{enumerate}
+\item Wait for the system to get into a steady state position with the following system setup: valve opening at 0.7 for all consumer valves and differential pressure over pumps at C2 = C16 = 0.2, C18 = 0.1, C25 = 0.25.
+\item Increase the differential pressure over C2 with 0.1.
+\item Wait 1.5 hour.
+\end{enumerate}
+
+
+\subsection*{Measuring data:}
+The data from the measurements can be seen on 
+
+\begin{figure}[H]
+\input{report/tikz/Time_constant_Water_Tank}
+\caption{The data measurement for the finding the time constant of the WT. A small red dot shows the time constant for the tank which is 1155 seconds.}
+\label{fig:Test_WT_Timeconstant}
+\end{figure}
+
+\subsection*{Uncertainties of measurement:}
+\begin{itemize}
+\item The settling time for the initial state was not reached after 1.5 hours.
+\end{itemize}
+
+\subsection*{Conclusion:}
+As it can be seen on \figref{fig:Test_WT_Timeconstant}, the time constant of the water tower is 984 seconds. From this the settling time for the WT can be found as $984\cdot 5 = 4920$ seconds.
+
+
+
+
+
+\todo{This last part has to be moved to another location later - If we at all are gonna need the above test}
+
+The time constant of the WT can be found through the linear differential equation shown in \eqref{statespace_4}. By Laplace transform and solving for the input output relation, the standard form of the transfer function for the WT can be derived as see in \eqref{eq:std_trans_tank_time}
+
+\begin{equation}
+	\begin{split}
+	\Delta \dot{p}_{WT} &= A_p \Delta \hat{p}_{WT}  + \pmb{B_p}\pmb{\hat{u}}\\
+	s\Delta p_{WT}(s) &= A_p \Delta \hat{p}_{WT}(s)  + \pmb{B_p}\pmb{\hat{u}(s)}\\
+	\frac{\Delta p_{WT}(s)}{u(s)} &= \frac{B}{s-A} = \frac{\frac{B}{A}}{\frac{1}{A}s + 1}
+	\end{split}
+	\label{eq:std_trans_tank_time}
+\end{equation}
+
+From the denominator, the time constant of the WT can be directly read as seen in \eqref{eq:direct_time_constant}
+
+\begin{equation}
+	\tau s + 1
+	\label{eq:direct_time_constant}
+\end{equation}
+
+Since A in \eqref{statespace_4} is a constant, due to the tank only having one state, the WT has one time constant. However the unit of A is in $[\frac{m^3}{h}]$ and needs to be convert to seconds. From %\eqref{}
+\todo{Finish - Simon}

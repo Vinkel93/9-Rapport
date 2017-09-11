@@ -1,0 +1,264 @@
+\chapter{Nomenclature}
+
+\section*{Acronyms}
+	
+	\begin{tabular}{|l c l|} \hline
+		PMA 		&&	Pressure Management Area		\\ \hline
+		CP			&&	Critical Point					\\ \hline
+		WT			&&	Water Tower						\\ \hline
+		MP		  	&&	Minimization Problem			\\ \hline
+		OD 			&&  Opening Degree					\\ \hline
+		KVL 		&&  Kirchhoff´s Voltage Law 		\\ \hline
+		KCL 		&&  Kirchhoff´s Current Law			\\ \hline
+		MPC			&&  Model Predictive Control		\\ \hline
+		GT			&&  Graph Theory					\\ \hline
+		NRMSE	    &&  Normalized Root Mean Square Error	\\ \hline
+		MNGB		&&  Matlab Nonlinear Grey Box	\\ \hline
+	\end{tabular}
+\section*{Symbols}
+
+\begin{adjustbox}{max height=0.49\textheight}
+\begin{tabular}{l l l} 
+	\textbf{Symbol}		&	\textbf{Description}										& \textbf{Unit}	\\\hline
+	$A$					&	Cross sectional area									    & [$m^2$]\\
+	$C_k$				&	$k^{th}$ component of the distribution network     			& [$\cdot$]\\
+	$C$					&	Electric capacitance								   		& [$F$]\\
+	$C_H$				&	Hydraulic capacitance								   		& [$m^3/(N/m^2)$]\\
+	$D$					&	Diameter									     			& [$m$]\\
+	$f$					&	Moody friction factor									    & [$\cdot$]\\
+	$f(\bm{q},\bm{OD})$	&	Vector field describing the pressure drops					& [$bar$]\\
+	$F$					&	Force									     				& [$N$]\\
+	$g$					&	Acceleration due to gravity									& [$m/s^2$]\\
+	$h$					&	Height of the fluid in the water Tower						& [$m$]\\
+	$h_f$				&	Pressure given in head									    & [$m$]\\
+	$h_m$				&	Form loss									    			& [$m$]\\
+	$I$					&	Electric Current 											& [$A$]\\
+	$\bm{\mathcal{I}}$  &	Identity matrix 											& [$\cdot$]\\
+	$J_k$				&	Inertia of the $k^{th}$ component							& [$kg/m^4$]\\
+	$k_f$				&	Form loss coefficient								    	& [$\cdot$]\\
+	$k_v(\bm{OD})$		&	Conductivity function								   	 	& [$\cdot$]\\	
+	$L$					&	Length									     				& [$m$]\\
+	$m$					&	Mass of body									     		& [$kg$]\\
+	$M$					&	Linear momentum									     		& [$kgm/s$]\\
+	$n_{gl}$			&	Valve characteristic curve factor							& [$\cdot$]\\
+	$OD$				&	Opening Degree 												& [$\cdot$]\\	
+	$p_a$				&	Atmospheric pressure							      		& [$bar$]\\
+	$P_e$				&	Power consumption of the pumps					      		& [$W$]\\
+	$P_h$				&	Hydraulic power									      		& [$W$]\\
+	$q_k$				&	Flow through the $k^{th}$ component 		     			& [$m^3/h$]\\
+	$Re$				&	Reynolds Number								     			& [$\cdot$]\\
+	$T$					&	Temperature									     			& [$\degree$]\\
+	$U$					&	Electric voltage 											& [$V$]\\
+	$u(\cdot)$			&	Vector field describing inputs 								& [$bar$]\\
+	$v$					&	Velocity									     			& [$m/s$]\\
+	$V_t$				&	Volume of water in the water tower							& [$m^3$]\\
+	$\bm{y}$			&	Vector describing the model outputs							& [$bar$]\\	
+	$z$					&	Flow through the chords										& [$m^3/h$]\\
+	$\alpha_k(\cdot)$	&	Pressure boost given by the	$k^{th}$ pump					& [$bar$]\\
+	$\gamma_k(\cdot)$	&	Pressure drop across the WT-connection						& [$bar$]\\
+	$\Delta p_k$		&	Pressure drop across the $i^{th}$ component      			& [$bar$]\\
+	$\Delta z_h$		&	Head loss due to elevation. 						    	& [$m$]\\
+	$\epsilon$			&	Average roughness									     	& [$m$]\\
+	$\zeta$				&	Pressure drop from elevation across the $k^{th}$ component	& [$bar$]\\
+	$\eta$				&	Efficiency of the pumps								   		& [$\cdot$]\\
+	$\theta_{max}$		&	Maximum angle of the valve opening degree					& [$\degree$]\\
+	$\theta_{off}$		&	Minimum angle where the valve closes						& [$\degree$]\\
+	$\theta_{OD}$		&	Angle of valve opening degree								& [$\degree$]\\
+	$\lambda_k(\cdot)$	&	Pressure drop across the $k^{th}$ pipe						& [$bar$]\\
+	$\mu_k(\cdot)$		&	Pressure drop across the $k^{th}$ valve						& [$bar$]\\
+	$\nu$				&	Kinematic viscosity									     	& [$kg/ms$]\\
+	$\rho$				&	Density									     				& [$kg/m^3$]\\
+	$\Upsilon$			&	Objective function for the minimization 					& [$DKK$]\\
+	$\omega_r$			&	Pump impeller rotational speed									& [$rad/s$]\\	
+\end{tabular}
+\end{adjustbox}
+
+\subsection*{Graph theory}
+
+\begin{tabular}{l l l} 
+	\textbf{Symbol}		&	\textbf{Description}										& \textbf{Unit}	\\\hline
+	$e$					&	Number of edges in the graph							    & [$\cdot$]\\	
+	$\bm{H}$			&	Incidence matrix									    	& [$\cdot$]\\
+	$\bm{H_c}$			&	Incidence matrix corresponding to the chords		    	& [$\cdot$]\\
+	$\bm{H_f}$			&	Incidence matrix corresponding to the spanning tree			& [$\cdot$]\\
+	$\mathcal{G}$		&	System Graph												& [$\cdot$]\\
+	$\mathcal{T}$		&	Spanning tree												& [$\cdot$]\\
+	$l$					&	Number of chords											& [$\cdot$]\\
+	$\bm{B}$			&	Cycle matrix 												& [$\cdot$]\\
+	$\bm{B_c}$			&	Cycle matrix corresponding to the chords				    & [$\cdot$]\\
+	$\bm{B_f}$			&	Cycle matrix corresponding to the spanning tree				& [$\cdot$]\\
+	$n_i$				&	$i^{th}$ node of the distribution network     				& [$\cdot$]\\
+
+\end{tabular}	
+% \section*{Mathematical tools}
+% vectorfields
+% \\
+% time derivatives
+% \\
+% vectors
+% \\
+% matrices
+% \\
+% derivative of vector fields
+% \\
+% Jakobi matrix
+% \\
+% chain rule in derivation
+% \\
+% pseudo inverse
+% \\
+% explain that $\bm{x}[k]$ is not iteration, it shows that x is a vector and a sequence-> this is very important to state ! 
+
+% We should write somthing about notation: 
+\newpage
+\section*{Glossary of mathematical notation}
+
+This section sums up the mathematical notation and terminology used in this report.
+
+\textbf{Upper and lower bounds of a variable}
+
+\begin{equation}
+\underline{x} < x < \overline{x} 
+\end{equation}
+
+ Where $x \in {\mathbb{R}} $ and $\overline{x}$ and $\underline{x}$ are the upper and lower bounds, respectively.
+ 
+ \textbf{Intervals}
+
+\begin{equation}
+	[a,b] =  \{x \in \mathbb{R}|a\leq x \leq b|\}
+\underline{x} < x < \overline{x} 
+\end{equation}
+
+ Where $\overline{x}$ and $\underline{x}$ are the upper and lower bounds, respectively.
+
+ \textbf{Vectors and matrices}
+
+Vectors and matrices are noted with bold fonts, such that $\bm{v}$ is a vector:
+
+\begin{equation}
+\bm{v} = 
+\begin{bmatrix}
+
+		 v_1 	\\
+		 v_2 	\\
+		 \vdots \\
+		 v_n
+
+\end{bmatrix}
+\in \pmb{{\mathbb{R}}}^{(n \times 1)}
+\end{equation}
+
+and $\bm{M}$ is a matrix:
+
+\begin{equation}
+\bm{M} = 
+\begin{bmatrix}
+
+		 m_{11} & m_{12} & \hdots & m_{1k}	\\
+		 m_{21} & m_{22} & \hdots & m_{2k}	\\
+		 \vdots & \vdots & \ddots & \vdots	\\
+		 m_{n1} & m_{n2} & \hdots &m_{nk} \\
+
+\end{bmatrix}
+\in \pmb{{\mathbb{R}}}^{(n \times k)}
+\end{equation}
+
+% Vectorfields are vector-valued functions and noted with greek letters such that:
+
+% \begin{equation}
+% \bm{v} = 
+% \begin{bmatrix}
+
+% 		 v_1 	\\
+% 		 v_2 	\\
+% 		 \vdots \\
+% 		 v_n
+
+% \end{bmatrix}
+% \end{equation}
+
+% $\alpha(\bm{v(t)})$
+
+Continues vector variables are noted with $\bm{v(t)}$ such that:
+
+\begin{equation}
+\bm{v(t)} = 
+\begin{bmatrix}
+
+		 v_1(t) 	\\
+		 v_2(t)	\\
+		 \vdots \\
+		 v_n(t)
+
+\end{bmatrix}
+\in \pmb{{\mathbb{R}}}^{(n \times 1)}
+\end{equation}
+
+While discrete vector variables are referred to as sequences and noted with $\bm{v[k]}$, such that:
+
+\begin{equation}
+\bm{v[k]} = 
+\begin{bmatrix}
+
+		 v_1[k] 	\\
+		 v_2[k]	\\
+		 \vdots \\
+		 v_n[k]
+
+\end{bmatrix}
+\in \pmb{{\mathbb{R}}}^{(n \times 1)}
+\end{equation}
+
+is a sequence, where $k$ is the time step between two entries.
+
+The pseudo inverse of a matrix is noted with $\bm{{M}^{\dagger}}$.
+
+ \textbf{Small-signal and operating point values}
+
+Small-signals are noted with $\hat{u}$ and the operating point values are noted with $\bar{u}$.
+
+ \textbf{Derivatives}
+
+ The partial derivative of a function is noted with
+
+\begin{equation}
+\frac{\partial{f(x,y)}}{\partial{x}}
+\end{equation}
+
+% The derivative of a vector by scalar is noted with 
+
+% \begin{equation}
+% \frac{\partial{\bm{v}}}{\partial{x}}
+% \end{equation}
+
+The derivative of a vector by vector is noted with:
+
+\begin{equation}
+\frac{\partial{\bm{v}}}{\partial{\bm{w}}} =
+\begin{bmatrix}
+    \frac{\partial v_{1}}{\partial w_1} & \frac{\partial v_{1}}{\partial w_2} &  \dots  & \frac{\partial v_{1}}{\partial w_n} \\
+    \frac{\partial v_{2}}{\partial w_1} & \frac{\partial v_{2}}{\partial w_2} &  \dots  & \frac{\partial v_{2}}{\partial w_n} \\
+    \vdots & \vdots &  \ddots & \vdots \\
+    \frac{\partial v_{k}}{\partial w_1} & \frac{\partial v_{k}}{\partial w_2} &  \dots  & \frac{\partial v_{k}}{\partial w_n}
+\end{bmatrix}
+\end{equation}
+
+If the size of vector $\bm{v}$ and $\bm{w}$ are the same, the resulting matrix is referred to as a Jacobian.
+
+The time derivative of a function is noted with
+
+\begin{equation}
+\dot{f} = \frac{d f(t)}{dt}
+\end{equation}
+
+\textbf{Vector fields}
+
+Vector fields are introduced, and represent vector valued functions such that the mapping is the following:
+
+\begin{equation}
+\alpha(\bm{v}) : \pmb{{\mathbb{R}}}^{(n)} \rightarrow \pmb{{\mathbb{R}}}^{(n)} : [v_1, v_2, \hdots, v_n] \rightarrow [\alpha(v_1), \alpha(v_2),\hdots,\alpha(v_n)]
+\end{equation}
+
+
+
